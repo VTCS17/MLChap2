@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from pandas.plotting import scatter_matrix
-from scipy.stats import stats
+from scipy import stats
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
@@ -262,5 +262,4 @@ print(test_rmse)
 
 confidence = 0.97
 squared_errors = (test_predictions - y_test) ** 2
-print(np.sqrt(
-    stats.t.inverval(confidence, len(squared_errors) - 1, loc=squared_errors.mean(), scale=stats.sem(squared_errors))))
+print(np.sqrt(stats.t.interval(confidence, len(squared_errors) - 1, loc=squared_errors.mean(), scale=stats.sem(squared_errors))))
